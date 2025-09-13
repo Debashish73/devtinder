@@ -1,11 +1,31 @@
 const express=require('express');
 const app=express();
-app.get('/user/:userid/:name/:password',(req,res)=>{
-    console.log(req.params);
+app.use('/user',
+    (req,res,next)=>{
+    
+ 
+    next();
+    res.send("heiloo");
+   
+   
 
-    res.send({Firstname:"Debashish",Lastname:"Jena"})
-})
+    }
+    ,
+(req,res,next)=>{
+     
+    res.send("heiloo  2");
+    next();
+},
+(req,res,next)=>{
+    // res.send("heiloo  2");
+    
+     res.send("boys");
+      next();
+
+ }
+    
+)
 
 
-app.listen('3000');
+app.listen('4000');
 console.log("Run well");
